@@ -7,7 +7,6 @@ using RentCar.models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using SMTP;
 namespace RentCar.Controllers
 {
     [Route("api/[controller]")]
@@ -16,14 +15,12 @@ namespace RentCar.Controllers
     {
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
-        private readonly SendMessage _sendMEssage;
 
 
-        public UsersController(DataContext context, IConfiguration configuration, SendMessage sendMEssage)
+        public UsersController(DataContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
-            _sendMEssage = sendMEssage;
         }
 
         [HttpPost("register")]
@@ -50,8 +47,6 @@ namespace RentCar.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-
-            await _sendMEssage.SendRegistrationEmail(request.Email, request.FirstName, request.LastName);
 
             return Ok(user);
         }

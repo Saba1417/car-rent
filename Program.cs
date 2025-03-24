@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentCar.data;
-using RentCar.SMTP;
-using SMTP;
 using Bogus;
 using RentCar.models;
 using System.Text;
-using RentCar.Faker;
 using RentCar.Repository.Abstract;
 using RentCar.Repository.Implementation;
 using Microsoft.Extensions.FileProviders;
@@ -28,9 +25,6 @@ builder.Services.AddDbContext<DataContext>(options =>
             ServerVersion.AutoDetect("server=localhost;user=root;password=admin;database=LimitatorTest;")));
 
 
-builder.Services.AddTransient<SendMessage>();
-builder.Services.AddTransient<SendRentMail>();
-builder.Services.AddTransient<GetRentMail>();
 builder.Services.AddTransient<IFileService, FileService>();
 
 builder.Services.AddEndpointsApiExplorer();

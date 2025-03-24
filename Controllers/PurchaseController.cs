@@ -3,7 +3,6 @@ using RentCar.models;
 using RentCar.DTO;
 using RentCar.data;
 using Microsoft.EntityFrameworkCore;
-using RentCar.SMTP;
 using System.Globalization;
 
 namespace RentCar.Controllers
@@ -15,14 +14,10 @@ namespace RentCar.Controllers
     {
 
         private readonly DataContext _context;
-        private readonly GetRentMail _GetRentEmail;
-        private readonly SendRentMail _sendMail;
 
-        public PurchaseController(DataContext context, GetRentMail getRentEmail, SendRentMail sendMail)
+        public PurchaseController(DataContext context)
         {
             _context = context;
-            _GetRentEmail = getRentEmail;
-            _sendMail = sendMail;
         }
 
         [HttpPost("purchase")]
@@ -72,8 +67,6 @@ namespace RentCar.Controllers
                 car.FuelCapacity,
                 car.City,
                 car.CreatedByEmail,
-                car.Latitude,
-                car.Longitude,
                 DayPrice = car.Price,
                 PricePaid = price
             };

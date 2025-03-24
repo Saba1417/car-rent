@@ -199,8 +199,6 @@ namespace RentCar.Controllers
                 CreatedBy = carInput.CreatedBy,
                 CreatedByEmail = carInput.CreatedByEmail,
                 City = carInput.City,
-                Latitude = carInput.Latitude,
-                Longitude = carInput.Longitude,
 
             };
 
