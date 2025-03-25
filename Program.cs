@@ -21,8 +21,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(options =>
-        options.UseMySql("server=localhost;user=root;password=admin;database=LimitatorTest;",
-            ServerVersion.AutoDetect("server=localhost;user=root;password=admin;database=LimitatorTest;")));
+        options.UseMySql("server=localhost;user=root;password=admin;database=DbCarRent;",
+            ServerVersion.AutoDetect("server=localhost;user=root;password=admin;database=DbCarRent;")));
 
 
 builder.Services.AddTransient<IFileService, FileService>();
