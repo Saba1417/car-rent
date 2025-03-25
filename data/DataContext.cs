@@ -68,9 +68,7 @@ namespace RentCar.data
                 .HasForeignKey(p => p.CarId);
 
 
-
-
         }
 
-}
+    }
 }

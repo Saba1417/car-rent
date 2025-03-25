@@ -17,8 +17,7 @@ namespace RentCar.Controllers
         [HttpPost("Message")]
         public IActionResult SendMessage(string phoneNumber, int carId)
         {
-            var user = _context.Users.Include(u => u.Message)
-                                      .SingleOrDefault(u => u.PhoneNumber == phoneNumber);
+            var user = _context.Users.SingleOrDefault(u => u.PhoneNumber == phoneNumber);
             var car = _context.Cars.SingleOrDefault(c => c.Id == carId);
 
             if (user == null)
@@ -33,7 +32,7 @@ namespace RentCar.Controllers
             $"Hey Someone Rented Your {car.Brand}/{car.Model}",
             $"{car.Brand}/{car.Model} Has Been Rented"
         };
-            var randomMessage = new Message { MessageText = messages[random.Next(messages.Count)] };
+            var randomMessage = new Message { MessageText = messages[random.Next(messages.Count)] , UserPhoneNumber = user.PhoneNumber};
 
             user.Message.Add(randomMessage);
 
