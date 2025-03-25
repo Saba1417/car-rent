@@ -52,7 +52,7 @@ namespace RentCar.Controllers
         }
 
             [HttpPost("login")]
-            public async Task<ActionResult> Login(UserDTO request)
+            public async Task<ActionResult> Login(LoginInput request)
             {
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber);
                 if (user == null)
